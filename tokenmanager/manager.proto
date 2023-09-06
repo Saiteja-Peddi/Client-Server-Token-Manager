@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package tokenmanager;
+
+option go_package = "example.com/AOS_PRJ2/tokenmanager;tokenmanagerpb";
+
+
+
+service TokenManager{
+    rpc Create(NormalRequest) returns (ServerResponse) {}
+    rpc Write(WriteRequest) returns (ServerResponse) {}
+    rpc Read(NormalRequest) returns (ServerResponse) {}
+    rpc Drop(NormalRequest) returns (ServerResponse) {}
+}
+
+message NormalRequest{
+    string Id = 1;
+}
+
+message WriteRequest{
+    string Id = 1;
+    string Name = 2;
+    uint64 Low = 3;
+    uint64 Mid = 4;
+    uint64 High = 5;
+}   
+
+message ServerResponse{
+    uint64 Message = 1;
+}
